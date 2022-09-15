@@ -3,21 +3,78 @@
 <head th:fragment="head(title)">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:replace="${title}">登录界面</title>
+    <title th:replace="${title}">注册界面</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
     <link rel="icon" href="../static/images/icon.ico" th:href="@{/images/icon.ico}" type="image/x-icon">
 </head>
 <body>
 
+<div  class="m-container-small m-padded-tb-massive" style="max-width: 30em !important;">
+    <!--用户登录输入框-->
+    <div class="ui container">
+        <div class="ui middle aligned center aligned grid">
+            <div class="column">
+                <h2 class="ui teal image header">
+                    <div class="content">
+                        用户注册
+                    </div>
+                </h2>
+                <!--th:action="@{/register}":把用户名和密码提交到它这个地方去-->
+                <form class="ui large form" method="post" action="#" th:action="@{/login}">
+                    <div class="ui segment">
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text" name="username" placeholder="用户名">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input type="password" name="password" placeholder="密码">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input type="password" name="repassword" placeholder="请再次输入密码">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="mail icon"></i>
+                                <input type="text" name="mail" placeholder="请输入邮箱">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input  name="verify" placeholder="请输入验证码">
+                                <div class="ui submit button">发送验证码</div>
+                            </div>
+                        </div>
+
+                        <button class="ui fluid large teal submit button">注   册</button>
+                    </div>
+
+
+                    <div class="ui error mini message"></div>
+                    <!--有值的情况下才会显示；negative；红色提示-->
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</div>
 
 
 <!--底部栏-->
 <footer th:fragment="footer" class="ui segment m-padded-tb-big " style="background: rgba(255,255,255,0.9)">
-    <div class="ui center aligned container ">
-        <div class="ui divided stackable grid">
-            <h4 class="ui header m-text-thin m-text-spaced m-opacity-mini m-center">欢迎进入lkl-td小初高数学学习网站</h4>
-        </div>
+    <div class="ui center aligned">
+        <h4 class="ui header m-text-thin m-text-spaced m-opacity-mini center aligned" >欢迎进入lkl-td小初高数学学习网站</h4>
     </div>
 </footer >
 
@@ -25,6 +82,48 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
 </th:block>
+
+<script>
+    $('.ui.form').form({
+        fields : {
+            username : {
+                identifier: 'username',
+                rules: [{
+                    type : 'empty',
+                    prompt: '请输入用户名'
+                }]
+            },
+            password : {
+                identifier: 'password',
+                rules: [{
+                    type : 'empty',
+                    prompt: '请输入密码'
+                }]
+            },
+            repassword : {
+                identifier: 'repassword',
+                rules: [{
+                    type : 'empty',
+                    prompt: '请再次输入密码'
+                }]
+            },
+            mail : {
+                identifier: 'mail',
+                rules: [{
+                    type : 'empty',
+                    prompt: '请输入邮箱'
+                }]
+            },
+            verify : {
+                identifier: 'verify',
+                rules: [{
+                    type : 'empty',
+                    prompt: '请输入验证码'
+                }]
+            }
+        }
+    });
+</script>
 
 </body>
 </html>

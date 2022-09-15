@@ -10,14 +10,55 @@
 </head>
 <body>
 
+<div  class="m-container-small m-padded-tb-massive" style="max-width: 30em !important;">
+    <!--用户登录输入框-->
+    <div class="ui container">
+        <div class="ui middle aligned center aligned grid">
+            <div class="column">
+                <h2 class="ui teal image header">
+                    <div class="content">
+                        用户登录
+                    </div>
+                </h2>
+                <!--th:action="@{/login}":把用户名和密码提交到它这个地方去-->
+                <form class="ui large form" method="post" action="#" th:action="@{/login}">
+                    <div class="ui  segment">
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text" name="username" placeholder="用户名">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input type="password" name="password" placeholder="密码">
+                            </div>
+                        </div>
+                        <button class="ui fluid large teal submit button">登   录</button>
+                    </div>
 
+                    <div class="ui segment">
+                        <div class="field">
+                            <a href="#" th:href="@{/register}" class="m-item item m-text m-teal" th:classappend>注册</a>
+                        </div>
+                    </div>
+                    <div class="ui error mini message"></div>
+                    <div class="ui mini negative message" th:unless="${#strings.isEmpty(message)}" th:text="${message}">用户名或密码错误</div>
+                    <!--有值的情况下才会显示；negative；红色提示-->
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</div>
 
 <!--底部栏-->
 <footer th:fragment="footer" class="ui segment m-padded-tb-big " style="background: rgba(255,255,255,0.9)">
-    <div class="ui center aligned container ">
-        <div class="ui divided stackable grid">
-            <h4 class="ui header m-text-thin m-text-spaced m-opacity-mini m-center">欢迎进入lkl-td小初高数学学习网站</h4>
-        </div>
+    <div class="ui center aligned">
+        <h4 class="ui header m-text-thin m-text-spaced m-opacity-mini center aligned" >欢迎进入lkl-td小初高数学学习网站</h4>
     </div>
 </footer >
 
@@ -25,6 +66,27 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
 </th:block>
+
+<script>
+    $('.ui.form').form({
+        fields : {
+            username : {
+                identifier: 'username',
+                rules: [{
+                    type : 'empty',
+                    prompt: '请输入用户名'
+                }]
+            },
+            password : {
+                identifier: 'password',
+                rules: [{
+                    type : 'empty',
+                    prompt: '请输入密码'
+                }]
+            }
+        }
+    });
+</script>
 
 </body>
 </html>

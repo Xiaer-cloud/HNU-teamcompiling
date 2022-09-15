@@ -16,7 +16,7 @@
         <div class="ui  secondary  menu " style="padding-top: -0.5em">
 
             <h1 class="ui header teal item m-text-header" style="padding-top: 0.1em;margin-top: 10px">Math</h1>
-            <a href="#" th:href="@{/}" class="m-item item m-text" th:classappend><i class="home icon"></i>首页</a>
+            <a href="#" th:href="@{/login}" class="m-item item m-text" th:classappend><i class="home icon"></i>首页</a>
             <a href="#" th:href="@{/choose}" class="m-item item m-text" th:classappend><i class="bookmark icon"></i>选题</a>
             <a href="#" th:href="@{/question}" class="m-item item m-text" th:classappend><i class="tags icon"></i>做题</a>
 
@@ -27,10 +27,8 @@
 
 <!--底部栏-->
 <footer th:fragment="footer" class="ui segment m-padded-tb-big " style="background: rgba(255,255,255,0.9)">
-    <div class="ui center aligned container ">
-        <div class="ui divided stackable grid">
-            <h4 class="ui header m-text-thin m-text-spaced m-opacity-mini m-center">欢迎进入lkl-td小初高数学学习网站</h4>
-        </div>
+    <div class="ui center aligned">
+        <h4 class="ui header m-text-thin m-text-spaced m-opacity-mini center aligned" >欢迎进入lkl-td小初高数学学习网站</h4>
     </div>
 </footer >
 
